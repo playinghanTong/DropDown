@@ -702,11 +702,10 @@ extension DropDown {
 		
         var visibleHeight = tableHeight - layout.offscreenHeight
         var offscreenHeight = layout.offscreenHeight
-        if let newHeight = self.visibleHeight, visibleHeight > newHeight {
-            visibleHeight = newHeight
-            offscreenHeight = 1.0
-            
-        }
+//        if let newHeight = self.visibleHeight, visibleHeight > newHeight {
+//            visibleHeight = newHeight
+//            offscreenHeight = 1.0
+//        }
         let canBeDisplayed = visibleHeight >= minHeight
 
 		return (layout.x, layout.y, layout.width, offscreenHeight, visibleHeight, canBeDisplayed, direction)
