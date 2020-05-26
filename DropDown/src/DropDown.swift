@@ -570,7 +570,7 @@ extension DropDown {
 		xConstraint.constant = layout.x
 		yConstraint.constant = layout.y
 		widthConstraint.constant = layout.width
-		heightConstraint.constant = visibleHeight ?? layout.visibleHeight
+		heightConstraint.constant = layout.visibleHeight
 
 		tableView.isScrollEnabled = layout.offscreenHeight > 0
 
@@ -700,8 +700,12 @@ extension DropDown {
 		constraintWidthToFittingSizeIfNecessary(layout: &layout)
 		constraintWidthToBoundsIfNecessary(layout: &layout, in: window)
 		
-		let visibleHeight = tableHeight - layout.offscreenHeight
-		let canBeDisplayed = visibleHeight >= minHeight
+        var visibleHeight = tableHeight - layout.offscreenHeight
+        if let newHeight = self.visibleHeight, visibleHeight > newHeight {
+            visibleHeight = newHeight
+            
+        }
+        let canBeDisplayed = visibleHeight >= minHeight
 
 		return (layout.x, layout.y, layout.width, layout.offscreenHeight, visibleHeight, canBeDisplayed, direction)
 	}
