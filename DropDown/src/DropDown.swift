@@ -701,13 +701,15 @@ extension DropDown {
 		constraintWidthToBoundsIfNecessary(layout: &layout, in: window)
 		
         var visibleHeight = tableHeight - layout.offscreenHeight
+        var offscreenHeight = layout.offscreenHeight
         if let newHeight = self.visibleHeight, visibleHeight > newHeight {
             visibleHeight = newHeight
+            offscreenHeight = 1.0
             
         }
         let canBeDisplayed = visibleHeight >= minHeight
 
-		return (layout.x, layout.y, layout.width, layout.offscreenHeight, visibleHeight, canBeDisplayed, direction)
+		return (layout.x, layout.y, layout.width, offscreenHeight, visibleHeight, canBeDisplayed, direction)
 	}
 
 	fileprivate func computeLayoutBottomDisplay(window: UIWindow) -> ComputeLayoutTuple {
