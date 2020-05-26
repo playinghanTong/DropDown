@@ -151,7 +151,10 @@ public final class DropDown: UIView {
 	public var width: CGFloat? {
 		didSet { setNeedsUpdateConstraints() }
 	}
-
+    
+    public var visibleHeight: CGFloat? {
+        didSet { setNeedsUpdateConstraints() }
+    }
 	/**
 	arrowIndication.x
 
@@ -567,7 +570,7 @@ extension DropDown {
 		xConstraint.constant = layout.x
 		yConstraint.constant = layout.y
 		widthConstraint.constant = layout.width
-		heightConstraint.constant = layout.visibleHeight
+		heightConstraint.constant = visibleHeight ?? layout.visibleHeight
 
 		tableView.isScrollEnabled = layout.offscreenHeight > 0
 
