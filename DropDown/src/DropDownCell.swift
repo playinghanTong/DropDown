@@ -15,7 +15,7 @@ open class DropDownCell: UITableViewCell {
 	
 	var selectedBackgroundColor: UIColor?
     var highlightTextColor: UIColor?
-    var normalTextColor: UIColor?
+    open var normalTextColor: UIColor?
 
 }
 
